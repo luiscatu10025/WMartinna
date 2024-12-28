@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template/generalTemplate.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form>
+            <p:commandButton value="Inicio" action="#{procesador.restore()}" ajax="false"/>
+            <p:panel header="Factura" footer="SRI">
+                <p:commandLink value="Facturas --> Excel" action="#{procesador.downloadFacturaXls()}" ajax="false"/>
+                <p:dataTable var="key" value="#{procesador.factura}">
+                    <p:column headerText="numeroAutorizacion">
+                        <p:commandLink ajax="false" action="#{procesador.downloadXml()}">
+                            <h:outputText value="#{key.numeroAutorizacion}" />
+                            <f:setPropertyActionListener value="#{key}"
+                                                         target="#{procesador.autorizacion}"/>
+                        </p:commandLink>
+                    </p:column>
+                    <p:column headerText="fechaAutorizacion">
+                        <h:outputText value="#{key.fechaAutorizacion}" />
+                    </p:column>
+                    <p:column headerText="rucEmisor">
+                        <h:outputText value="#{key.rucEmisor}" />
+                    </p:column>
+                    <p:column headerText="razonSocialEmisor">
+                        <h:outputText value="#{key.razonSocialEmisor}" />
+                    </p:column>
+                    <p:column headerText="serieComprobante">
+                        <h:outputText value="#{key.serieComprobante}" />
+                    </p:column>
+                    <p:column headerText="tipoComprobante">
+                        <h:outputText value="#{key.tipoComprobante}" />
+                    </p:column>
+                    <p:column headerText="fechaEmision">
+                        <h:outputText value="#{key.fechaEmision}" />
+                    </p:column>
+                    <p:column headerText="totalSinImpuestos">
+                        <h:outputText value="#{key.totalSinImpuestos}" />
+                    </p:column>
+                    <p:column headerText="baseCero">
+                        <h:outputText value="#{key.baseCero}" />
+                    </p:column>
+                    <p:column headerText="baseIva">
+                        <h:outputText value="#{key.baseIva}" />
+                    </p:column>
+                    <p:column headerText="iva">
+                        <h:outputText value="#{key.iva}" />
+                    </p:column>
+                    <p:column headerText="importeTotal">
+                        <h:outputText value="#{key.importeTotal}" />
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+            <p:separator/>
+
+            <p:panel header="Nota de Credito" footer="SRI">
+                <p:commandLink value="Nota de Crédito --> Excel" action="#{procesador.downloadNotaCreditoXls()}" ajax="false"/>
+                <p:dataTable var="key" value="#{procesador.notaCredito}">
+                    <p:column headerText="numeroAutorizacion">
+                        <p:commandLink ajax="false" action="#{procesador.downloadXml()}">
+                            <h:outputText value="#{key.numeroAutorizacion}" />
+                            <f:setPropertyActionListener value="#{key}"
+                                                         target="#{procesador.autorizacion}"/>
+                        </p:commandLink>
+                    </p:column>
+                    <p:column headerText="fechaAutorizacion">
+                        <h:outputText value="#{key.fechaAutorizacion}" />
+                    </p:column>
+                    <p:column headerText="rucEmisor">
+                        <h:outputText value="#{key.rucEmisor}" />
+                    </p:column>
+                    <p:column headerText="razonSocialEmisor">
+                        <h:outputText value="#{key.razonSocialEmisor}" />
+                    </p:column>
+                    <p:column headerText="serieComprobante">
+                        <h:outputText value="#{key.serieComprobante}" />
+                    </p:column>
+                    <p:column headerText="tipoComprobante">
+                        <h:outputText value="#{key.tipoComprobante}" />
+                    </p:column>
+                    <p:column headerText="fechaEmision">
+                        <h:outputText value="#{key.fechaEmision}" />
+                    </p:column>
+                    <p:column headerText="numDocModificado">
+                        <h:outputText value="#{key.numDocModificado}" />
+                    </p:column>
+                    <p:column headerText="totalSinImpuestos">
+                        <h:outputText value="#{key.totalSinImpuestos}" />
+                    </p:column>
+                    <p:column headerText="valorModificacion">
+                        <h:outputText value="#{key.valorModificacion}" />
+                    </p:column>
+                    <p:column headerText="motivo">
+                        <h:outputText value="#{key.motivo}" />
+                    </p:column>
+
+                </p:dataTable>
+            </p:panel>
+            <p:separator/>
+
+            <p:panel header="Retenciones" footer="SRI">
+                <p:commandLink value="Retención --> Excel" action="#{procesador.downloadRetencionXls()}" ajax="false"/>
+                <p:dataTable var="key" value="#{procesador.retencion}">
+                    <p:column headerText="numeroAutorizacion">
+                        <p:commandLink ajax="false" action="#{procesador.downloadXml()}">
+                            <h:outputText value="#{key.numeroAutorizacion}" />
+                            <f:setPropertyActionListener value="#{key}"
+                                                         target="#{procesador.autorizacion}"/>
+                        </p:commandLink>
+                    </p:column>
+                    <p:column headerText="fechaAutorizacion">
+                        <h:outputText value="#{key.fechaAutorizacion}" />
+                    </p:column>
+                    <p:column headerText="rucEmisor">
+                        <h:outputText value="#{key.rucEmisor}" />
+                    </p:column>
+                    <p:column headerText="razonSocialEmisor">
+                        <h:outputText value="#{key.razonSocialEmisor}" />
+                    </p:column>
+                    <p:column headerText="serieComprobante">
+                        <h:outputText value="#{key.serieComprobante}" />
+                    </p:column>
+                    <p:column headerText="tipoComprobante">
+                        <h:outputText value="#{key.tipoComprobante}" />
+                    </p:column>
+                    <p:column headerText="fechaEmision">
+                        <h:outputText value="#{key.fechaEmision}" />
+                    </p:column>
+                    <p:column headerText="periodoFiscal">
+                        <h:outputText value="#{key.periodoFiscal}" />
+                    </p:column>
+
+
+                </p:dataTable>
+            </p:panel>
+            <p:separator/>
+            <p:panel header="Otros" footer="SRI">
+                <p:dataTable var="key" value="#{procesador.otros}">
+                    <p:column headerText="numeroAutorizacion">
+                        <h:outputText value="#{key.numeroAutorizacion}" />
+                    </p:column>
+                    <p:column headerText="fechaAutorizacion">
+                        <h:outputText value="#{key.fechaAutorizacion}" />
+                    </p:column>
+                    <p:column headerText="rucEmisor">
+                        <h:outputText value="#{key.rucEmisor}" />
+                    </p:column>
+                    <p:column headerText="razonSocialEmisor">
+                        <h:outputText value="#{key.razonSocialEmisor}" />
+                    </p:column>
+                    <p:column headerText="serieComprobante">
+                        <h:outputText value="#{key.serieComprobante}" />
+                    </p:column>
+                    <p:column headerText="tipoComprobante">
+                        <h:outputText value="#{key.tipoComprobante}" />
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+    </ui:define>
+
+
+</ui:composition>

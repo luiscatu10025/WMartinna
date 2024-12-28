@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template/generalTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+        <p:growl id="messages" showDetail="true"/>
+        <p:panel header="Archivo de texto" footer="Claves de accceso SRI">
+            <h:form enctype="multipart/form-data">
+                <p:fileUpload value="#{fileUpload.file}" mode="simple" skinSimple="true"/>
+                <p:commandButton value="Submit" ajax="false" action="#{fileUpload.upload}" styleClass="p-mt-3 ui-button-outlined p-d-block"/>
+               
+            </h:form>
+        </p:panel>
+
+    </ui:define>
+
+</ui:composition>
